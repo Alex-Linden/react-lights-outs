@@ -68,20 +68,36 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       };
 
       // TODO: Make a (deep) copy of the oldBoard
+      const boardCopy = board.map((n) => n);
 
       // TODO: in the copy, flip this cell and the cells around it
+      flipCell(y, x, boardCopy);
+      flipCell(y + 1, x, boardCopy);
+      flipCell(y, x + 1, boardCopy);
+      flipCell(y - 1, x, boardCopy);
+      flipCell(y, x - 1, boardCopy);
 
       // TODO: return the copy
+      return boardCopy;
     });
   }
 
+  // TODO
   // if the game is won, just show a winning msg & render nothing else
 
-  // TODO
 
+  // TODO
   // make table board
+  return (
+    <div>
+      <table>
+        { board.map((row, yidx) => row.map((col, xidx) => 
+          <Cell flipCellsAroundMe={flipCellsAround} isLit={col} key={`${yidx}-${xidx}`}/>
+        ))}
+      </table>
+    </div>
+  )
 
-  // TODO
 }
 
 export default Board;
