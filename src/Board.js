@@ -45,11 +45,18 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   }
 
   function hasWon() {
-    // TODO: check the board in state to determine whether the player has won.
+    //TODO: can use map here
+    for (let i = 0; i < board.length; i++) {
+      i.filter((i) => i === false);
+      if (i.length > 0) {
+        return false;
+      }
+    }
+    return true;
   }
 
   function flipCellsAround(coord) {
-    setBoard(oldBoard => {
+    setBoard((oldBoard) => {
       const [y, x] = coord.split("-").map(Number);
 
       const flipCell = (y, x, boardCopy) => {
